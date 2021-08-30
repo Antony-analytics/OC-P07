@@ -14281,19 +14281,20 @@ a.anchor-link {
     <u><b><font size = 3 color = "black">Scénario</font></b><br></u>
     Vous êtes employé dans une banque, présente dans de nombreux pays à travers le monde.<br>
     Vous devez cibler de nouveaux clients potentiels, plus particulièrement les jeunes en âge d'ouvrir leur tout premier compte bancaire.<br>
-    Vous ne disposez que des informations suivantes : 
+    Vous ne disposez que des informations suivantes dans un csv, téléchargeable sur le <a href = "https://s3-eu-west-1.amazonaws.com/static.oc-static.com/prod/courses/files/parcours-data-analyst/data-projet7.csv" target="_blank"> ce premier lien</a>. Sur ce <a href = "https://data.worldbank.org/indicator/SI.POV.GINI" target "_blank">ce second lien</a>, vous pourrez trouver beaucoup d'informations de la <strong>World Bank</strong> comme les indices de Gini et d'autres données économiques nationales.<br>
+    Au global, notre intérêt se porte sur les informations suivantes : 
     <ol>
         <li>le revenu des parents</li>
         <li>le revenu moyen du pays dans lequel habite le prospect</li>
         <li>l'indice de Gini calculé sur les revenus des habitants du pays en question</li>
     </ol>
 
-La démarche se déroulera en <u><b>quatre missions</b></u>, détaillées le long du notebook pour accompagner le lecteur.<br><br><br>
+La démarche se déroulera en <u><b>quatre missions</b></u>, détaillées le long du notebook pour vous accompagner dans la lecture.<br><br><br>
 </div>
 
 
 
-<br><center><font size = 8, color = "black">Sommaire</font></center>
+<br><a id = "sommaire"><center><font size = 8, color = "black">Sommaire</font></center></a>
 <br>
 
 <div style="float:left;width:50%;">
@@ -14349,7 +14350,7 @@ La démarche se déroulera en <u><b>quatre missions</b></u>, détaillées le lon
     <li><a href='#M2P8'><font size = 4, color = "#FFA500">Propositions de Gini max et min</font></a></li>
     <li><a href='#M2P9'><font size = 4, color = "#FFA500">Sélection finale</font></a></li>
     <li><a href='#M2P10'><font size = 4, color = "#FFA500">Sélection finale - Lorenz et Ginis</font></a></li>
-    <li><a href='#M2P11'><font size = 4, color = "#FFA500">Classements des Ginis globaux</font></a></li>
+    <li><a href='#M2P11'><font size = 4, color = "#FFA500">Classements globaux des Ginis</font></a></li>
     <br>
     <br>
     <br>
@@ -14357,11 +14358,11 @@ La démarche se déroulera en <u><b>quatre missions</b></u>, détaillées le lon
     <br>
     <br>
     <li><a href='#M4P1'><font size = 4, color = "#E36A6A">ANOVA</font></a></li>
-    <div style="text-indent: 20px;"><a href='#M4P2'><font size = 4, color = "#E36A6A">données log</font></a></div>
-    <div style="text-indent: 20px;"><a href='#M4P3'><font size = 4, color = "#E36A6A">données non-log</font></a></div>
+    <div style="text-indent: 20px;"><a href='#M4P2'><font size = 4, color = "#E36A6A">données non-log</font></a></div>
+    <div style="text-indent: 20px;"><a href='#M4P3'><font size = 4, color = "#E36A6A">données log</font></a></div>
     <li><a href='#M4P4'><font size = 4, color = "#E36A6A">Régression linéaire 1</font></a></li>
     <div style="text-indent: 20px;"><a href='#M4P5'><font size = 4, color = "#E36A6A">données non-log</font></a></div>
-    <div style="text-indent: 20px;"><a href='#M4P6'><font size = 4, color = "#E36A6A">données nlog</font></a></div>
+    <div style="text-indent: 20px;"><a href='#M4P6'><font size = 4, color = "#E36A6A">données log</font></a></div>
     <li><a href='#M4P7'><font size = 4, color = "#E36A6A">Régression linéaire 2</font></a></li> 
     <div style="text-indent: 20px;"><a href='#M4P8'><font size = 4, color = "#E36A6A">données non-log</font></a></div>
     <div style="text-indent: 20px;"><a href='#M4P9'><font size = 4, color = "#E36A6A">données log</font></a></div>
@@ -14473,7 +14474,9 @@ Je commence la description brève et le nettoyage de mes données selon la méth
 <li>analyse et traitement colonne par colonne</li>
 </ul>
 <p>Je commence par une vue rapide et globale de mon dataframe et de ses variables.</p>
-<p><a id='M1P1'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M1P1'></a></p>
 <h2 id="Info">Info<a class="anchor-link" href="#Info">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14707,7 +14710,7 @@ Mon dataframe comporte six colonnes :</p>
 </ul>
 </li>
 </ul>
-<p>Le Dtype object dans la colonne <strong>contry</strong> regroupe des chaines de caractères. J'unifie le type de données s'y trouvant, bien que cela n'en change pas le Dtype.
+<p>Le Dtype object dans la colonne <strong>country</strong> regroupe des chaines de caractères. J'unifie le type de données s'y trouvant, bien que cela n'en change pas le Dtype.
 <br><br></p>
 
 </div>
@@ -14777,8 +14780,10 @@ memory usage: 543.8+ KB
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><br><br>
 Maintenant que les types de variables sont fixés, je regarde une brève description univariée de mon dataframe.
-<br><br>
-<a id='M1P2'></a></p>
+<br><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M1P2'></a></p>
 <h2 id="describe">describe<a class="anchor-link" href="#describe">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -14926,11 +14931,12 @@ Je me penche à présent sur l'étude et la correction de chacune de mes colonne
 <li>nb_quantile</li>
 <li>income</li>
 <li>gdpppp
-<br><br>
-<a id='M1P3'></a>
-## year_survey</li>
+<br><br></li>
 </ul>
-
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M1P3'></a></p>
+<h2 id="year_survey">year_survey<a class="anchor-link" href="#year_survey">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -15035,8 +15041,10 @@ La majorité de mes dates d'échantillonnage sont en 2008, puis en 2007, 2009, 2
 La distribution a une allure normale avec une moyenne de 2007.98, en 2008 donc.
 <br>
 Penchons-nous sur les quantiles :
-<br><br>
-<a id='M1P4'></a></p>
+<br><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M1P4'></a></p>
 <h2 id="quantile">quantile<a class="anchor-link" href="#quantile">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -15803,7 +15811,9 @@ Le 41ème centile a été rajouté, le pays LTU dispose de 100 lignes dans le no
 <p><br><br>
 Je m'intéresse maintenant à la colonne <strong>income</strong> exprimée en PPP.
 <br><br></p>
-<p><a id='M1P5'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M1P5'></a></p>
 <h2 id="income">income<a class="anchor-link" href="#income">&#182;</a></h2><p><strong>Définition PPP</strong><br></p>
 <p>Parité de Pouvoir d'achat (Purchasing Power Parity): méthode utilisée en économie pour établir une comparaison des pouvoirs d'achats entre pays selon leurs devises respectives. Une simple utilisation des taux de change (FOREX) ne permet pas de prendre en compte les différences de coûts de la vie. Dans notre étude, la parité de pouvoir d'achat (<strong>PPP</strong>) nous permet de prendre en compte l'intensité du coût de la vie dans chaque pays et d'en reporter l'impact sur le niveau de revenu. A titre d'exemple, un salaire de 60k€ annuels à Paris permet d'avoir une qualité de vie équivalente à un salaire de 50k€ annuels à Rome (source non fiable, exemple illustratif). La courbe des salaires s'en trouve donc remodelée lorsqu'elle est transformée en <strong>PPP</strong>. L'OCDE explique ci-dessous, en anglais, par quelle méthode la transformation en PPP est appliquée.</p>
 <p>Méthode EKS : A multilateral method developed by O. Elteto, P. Koves and B. Szulc [Schultz] that computes the nth root of the product of all possible Fisher indexes between n countries. It has been used at the detailed heading level to obtain heading parities, and also at the GDP level. EKS has the properties of base-country invariance and transitivity. For more information, clic there : <a href="https://stats.oecd.org/glossary/detail.asp?ID=5525" target="_blank"> https://stats.oecd.org/glossary/detail.asp?ID=5525</a></p>
@@ -15990,12 +16000,9 @@ Se pose la question des inégalités entre pays, des différences de distributio
 <br><br>
 Nous nous occupons maintenant de la colonne <strong>gdpppp</strong>
 <br><br></p>
-
-</div>
-</div>
-<div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
-</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id='M1P6'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M1P6'></a></p>
 <h2 id="gdpppp">gdpppp<a class="anchor-link" href="#gdpppp">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -16804,8 +16811,10 @@ Le montant réel du GDPPPP fidjien est de 7 777.69 PPP, d'après la WDI. Cela co
 La distribution des PIB/hbt en PPP est plus lisible, bien qu'autant inégalitaire que les revenus (colonne <strong>income</strong>).<br></p>
 <p>Maintenant, nous souhaitons compléter le dataset en y ajoutant, pays par pays, la population en 2008. Bien que certains échantillonnages aient été faits dans une année différente, l'objet de mon étude demeure la distribution des revenus en 2008. Ce choix est une prise de position discutable. Nous associons à une population d'une année (2008) la distribution des revenus d'une potentielle autre année (2011 par exemple). Dans une optique plus rigoureuse, nous aurions imputé, pour chaque pays, sa population de l'année de son échantillonnage. Toutefois, nous comparerions la population et la distribution des revenus d'un pays en 2011 avec les mêmes informations d'un autre pays en 2008.<br></p>
 <p>Les deux méthodes ayant des avantages et inconvénients, nous choisissons de nous en tenir à la population de 2008. 
-<br><br>
-<a id='M1P7'></a></p>
+<br><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M1P7'></a></p>
 <h2 id="Population-mondiale-et-&#233;chantillon">Population mondiale et &#233;chantillon<a class="anchor-link" href="#Population-mondiale-et-&#233;chantillon">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -17441,7 +17450,9 @@ Nous étudions les revenus à travers des centiles, à savoir les 100 revenus d�
 </ul>
 <p>Nous entrons donc dans la seconde mission.
 <br><br></p>
-<p><a id='M2'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M2'></a></p>
 <h1 id="Mission-02">Mission 02<a class="anchor-link" href="#Mission-02">&#182;</a></h1><ol>
 <li>Montrez la diversité des pays en termes de distribution de revenus à l'aide d'un graphique (axe des ordonnées, sur une échelle logarithmique).</li>
 <li>Représentez la courbe de Lorenz et l'évolution de l'indice de Gini au fil des ans de chacun des pays choisis.</li>
@@ -17653,8 +17664,10 @@ Nous modelons le dataset ensuite pour répondre à chaque demande de la mission 
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><br><br>
 J'importe maintenant les indices de Gini de la WDI, stockés dans le dataset <strong>data_gini</strong>.
-<br><br>
-<a id='M2P2'></a></p>
+<br><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M2P2'></a></p>
 <h2 id="Indices-de-Gini">Indices de Gini<a class="anchor-link" href="#Indices-de-Gini">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -18497,7 +18510,9 @@ Nous complétons maintenant notre dataset :</p>
 </ul>
 <p>Nous obtenons ces informations dans le dataset <strong>table_pays</strong> importé sur le site de la WDI.
 <br><br></p>
-<p><a id='M2P3'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M2P3'></a></p>
 <h2 id="Classification-g&#233;o-et-&#233;co">Classification g&#233;o et &#233;co<a class="anchor-link" href="#Classification-g&#233;o-et-&#233;co">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -19372,7 +19387,9 @@ Deux classifications différentes possibles permettent de le faire :</p>
 <li>K-means</li>
 </ul>
 <p>Nous commençons par la classification hiérarchique ascendante (CAH).</p>
-<p><a id='M2P4'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M2P4'></a></p>
 <h2 id="Classification-Hi&#233;rarchique-Ascendante">Classification Hi&#233;rarchique Ascendante<a class="anchor-link" href="#Classification-Hi&#233;rarchique-Ascendante">&#182;</a></h2><h3 id="CAH">CAH<a class="anchor-link" href="#CAH">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -19904,8 +19921,8 @@ Nous choisissons l'indice de Gini le plus élevé de chacun des clusters.Les dis
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><br><br>
 Nous affichons les distributions de revenus à l'échelle logarithmique dans le but d'afficher de possibles valeurs extrêmes dans le même graphique.
-<br><br>
-<a id='M2P5'></a></p>
+<br><br></p>
+<p><a id='M2P5'></a></p>
 <h3 id="Graphique-logarithmique">Graphique logarithmique<a class="anchor-link" href="#Graphique-logarithmique">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -19974,8 +19991,11 @@ Nous affichons les distributions de revenus à l'échelle logarithmique dans le 
 <li>Chine et Inde sont dans le même cluster pour leur population dans les mêmes grandeurs, sans considérer suffisamment leurs distributions de revenus ni leur type d'économie</li>
 <li>Les pays sud-américains sont tous dans le même cluster malgré leurs spécificités : Brazil vs Colombia par exemple</li>
 </ul>
-<p>Nous cherchons donc un autre moyen d'optimiser le nombre de clusters. Nous procédons par K-means. Il confirmera ou infirmera nos  réserves ci-dessus.</p>
-<p><a id='M2P7'></a></p>
+<p>Nous cherchons donc un autre moyen d'optimiser le nombre de clusters. Nous procédons par K-means. Il confirmera ou infirmera nos  réserves ci-dessus.
+<br><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M2P7'></a></p>
 <h2 id="Choix-des-pays---K-means">Choix des pays - K-means<a class="anchor-link" href="#Choix-des-pays---K-means">&#182;</a></h2>
 </div>
 </div>
@@ -20547,8 +20567,9 @@ Les pays à indices de Gini plus faibles, cluster par cluster, sont : [&#39;Taji
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><br><br>
 J'illustre les dix distributions de ces deux groupes de pays dans deux graphiques logarithmiques.
-<br><br>
-<a id='M2P8'></a></p>
+<br><br></p>
+<p><br></p>
+<p><a id='M2P8'></a></p>
 <h3 id="Graphique-logarithmique---Gini-Max-et-Gini-Min">Graphique logarithmique - Gini Max et Gini Min<a class="anchor-link" href="#Graphique-logarithmique---Gini-Max-et-Gini-Min">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -20668,8 +20689,10 @@ Au regard des différents graphiques, cinq types de profils semblent se dessiner
 <li><strong>Inde</strong> : Gini faible (distribution des revenus relativement égalitaire) &amp; revenu moyen faible (niveau de vie global faible)</li>
 </ul>
 <p>Nous regroupons maintenant ces cinq profils dans un même graphique logarithmique.
-<br><br>
-<a id='M2P9'></a></p>
+<br><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M2P9'></a></p>
 <h3 id="Graphique-logarithmique-final">Graphique logarithmique final<a class="anchor-link" href="#Graphique-logarithmique-final">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -20732,7 +20755,9 @@ Au regard des différents graphiques, cinq types de profils semblent se dessiner
 <p><br><br>
 Nous complétons notre analyse en illustrant, pour chaque pays, les distributions de revenus par des courbes de Lorenz et l'évolution historique de leurs indices de Gini. 
 <br><br></p>
-<p><a id='M2P10'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M2P10'></a></p>
 <h3 id="Lorenz-&amp;-Ginis">Lorenz &amp; Ginis<a class="anchor-link" href="#Lorenz-&amp;-Ginis">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -20822,12 +20847,12 @@ Maintenant, nous classons tous nos pays pour connaître :</p>
 <li>le top 5 des plus faibles indices de Gini (les cinq pays les plus égalitaires dans leurs distributions de revenus)</li>
 <li>le top 5 des plus forts indices de Gini (les cinq pays les plus inégalitaires dans leurs distributions de revenus)</li>
 <li>le classement de la France
-<br><br>
-<a id='M2P11'></a>
-## Classements
-### Moyenne pondérée par population</li>
+<br><br></li>
 </ul>
-
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M2P11'></a></p>
+<h2 id="Classements">Classements<a class="anchor-link" href="#Classements">&#182;</a></h2><h3 id="Moyenne-pond&#233;r&#233;e-par-population">Moyenne pond&#233;r&#233;e par population<a class="anchor-link" href="#Moyenne-pond&#233;r&#233;e-par-population">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -21126,7 +21151,9 @@ Maintenant, nous classons tous nos pays pour connaître :</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p>La France a donc le 41ème gini le plus faible de notre échantillon. Sa distribution de salaires est donc plus tassée que la moyenne mondiale.</p>
 <p>Conformément au projet, nous allons maintenant mettre en oeuvre un algorithme de simulation de classes de revenus parents et enfants, applicable à notre échantillon actuel.</p>
-<p><a id='M3'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M3'></a></p>
 <h1 id="Mission-03">Mission 03<a class="anchor-link" href="#Mission-03">&#182;</a></h1><p><strong>Consignes brèves<br></strong>
 A date, seulement deux des trois variables explicatives souhaitées sont à notre disposition :</p>
 <ul>
@@ -21135,8 +21162,10 @@ A date, seulement deux des trois variables explicatives souhaitées sont à notr
 </ul>
 <p>Nous cherchons maintenant à calculer, pour un individu , la classe de revenu de ses parents.</p>
 <p><strong>Méthode</strong>
-Elle sera détailliée pour chaque sous-partie de la mission 03.
-<a id='M3P1'></a></p>
+Elle sera détailliée pour chaque sous-partie de la mission 03.</p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M3P1'></a></p>
 <h2 id="G&#233;n&#233;ration-des-1-000-000-de-$ln(Y_{parents})$">G&#233;n&#233;ration des 1 000 000 de $ln(Y_{parents})$<a class="anchor-link" href="#G&#233;n&#233;ration-des-1-000-000-de-$ln(Y_{parents})$">&#182;</a></h2><p>Générez un grand nombre $n$ de réalisations d'une variable que nous appellerons  $ln(Y_{parent})$ selon une loi normale. Le choix de la moyenne et de l'écart type n'auront pas d'incidence sur le résultat final. $n$ doit être supérieur à 1000 fois le nombre de quantiles.
 <br>
 Je dispose de 100 quantiles, je vais donc générer des séries de 1 000 000 de lignes.
@@ -21182,7 +21211,10 @@ Je calcule la variance des revenus sans pondération</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id='M3P2'></a></p>
+<p><div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div>
+<a id='M3P2'></a></p>
 <h2 id="G&#233;n&#233;ration-du-$\epsilon$">G&#233;n&#233;ration du $\epsilon$<a class="anchor-link" href="#G&#233;n&#233;ration-du-$\epsilon$">&#182;</a></h2><p>Générez $n$ réalisations du terme d'erreur $\epsilon$ selon une loi normale de moyenne 0 et d'écart type 1.</p>
 
 </div>
@@ -21324,7 +21356,9 @@ Je calcule la variance des revenus sans pondération</p>
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id='M3P3'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M3P3'></a></p>
 <h2 id="Calcul-de-l'estimateur-$y_{child}$-avec-p-=-0.9">Calcul de l'estimateur $y_{child}$ avec p = 0.9<a class="anchor-link" href="#Calcul-de-l'estimateur-$y_{child}$-avec-p-=-0.9">&#182;</a></h2><p>Pour une valeur donnée de $\rho_j$ (par exemple 0.9), calculez 
 <font size = 7>$y_{child} = e^{\alpha+\rho_jln(y_{parent})+\epsilon}$</font>.</p>
 <p>Le choix de $\alpha$ n'a aucune incidence sur le résultat final.<br>
@@ -21492,8 +21526,10 @@ Je calcule la variance des revenus sans pondération</p>
 <p><br><br>
 Nous calculons maintenant les centiles des revenus enfants et parents.<br>
 Pour faciliter la lecture dees tableaux, nous choisissons 10 quantiles (déciles). Nous poursuivons les simulations sur 1 million de revenus probables.
-<br><br>
-<a id='M3P4'></a></p>
+<br><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M3P4'></a></p>
 <h2 id="Calcul-des-classes">Calcul des classes<a class="anchor-link" href="#Calcul-des-classes">&#182;</a></h2><p>Pour chacun des $n$ individus générés, calculez la classe de revenu $c_{i,child}$ ainsi que la classe de
 revenu de ses parents $c_{i,parent}$ , à partir de $y_{child}$ et de $y_{parent}$.</p>
 
@@ -21695,8 +21731,10 @@ Pour chaque décile enfant, quelle est la distribution des classes parents ?<br>
 <li>calculer, toujours dans cette classe enfant, la proportion de chaque classe parent (10 classes parents)</li>
 </ul>
 <p>Nous obtenons les répartitions conditionnelles.
-<br><br>
-<a id='M3P5'></a></p>
+<br><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M3P5'></a></p>
 <h2 id="Calcul-des-proba-conditionnelles">Calcul des proba conditionnelles<a class="anchor-link" href="#Calcul-des-proba-conditionnelles">&#182;</a></h2><h3 id="Parents">Parents<a class="anchor-link" href="#Parents">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -22107,9 +22145,9 @@ Calculons maintenant la répartition des classes enfants conditionnellement à l
 <ul>
 <li>isoler classe parent par classe parent</li>
 <li>pour chacune d'elle obtenir les classes enfants</li>
-<li>calculer, toujours dans cette classe parent, la proportion de chaque classe enfant présente (10 classes enfant)</li>
+<li>calculer, toujours dans cette classe parent, la proportion de chaque classe enfant présente (10 classes enfant)
+<br><br></li>
 </ul>
-<p><br><br></p>
 <h3 id="Calcul-des-proba-conditionnelles-enfants">Calcul des proba conditionnelles enfants<a class="anchor-link" href="#Calcul-des-proba-conditionnelles-enfants">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -22272,8 +22310,10 @@ Calculons maintenant la répartition des classes enfants conditionnellement à l
 Le constat est sans appel : la similarité entre <strong>proba_cond_child_09</strong> et <strong>proba_cond_parent_09</strong> est réelle.<br>
 Ainsi, illustrer la répartition conditionnelle des classes parents en fonction des classes enfants est équivalent à illustrer la répartition conditionnelle des classes enfants en fonction des classes parents.<br></p>
 <p>Nous souhaitons maintenant illustrer les répartitions des quantiles enfants conditionnellement aux classes parents.
-<br><br>
-<a id='M3P6'></a></p>
+<br><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M3P6'></a></p>
 <h2 id="Graphique-distributions-conditionnelles">Graphique distributions conditionnelles<a class="anchor-link" href="#Graphique-distributions-conditionnelles">&#182;</a></h2><h3 id="p=0.9">p=0.9<a class="anchor-link" href="#p=0.9">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -22469,7 +22509,9 @@ Il est manifeste qu'avec un pj bien inférieur, la probabilité qu'un enfant soi
 Cette corrélation est positive : plus le coefficient augmente, plus la probabilité de la classe enfant d'être conforme à la classe parent augmente. Augmente-t-elle de la même manière en fonction du décile ? Nous n'étudierons pas la question dans ce projet, mais elle mérite d'être soulevé.<br></p>
 <p>Appliquons maintenant toute cette méthode à notre dataset global.
 <br><br></p>
-<p><a id='M3P7'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M3P7'></a></p>
 <h2 id="Effacement-individus">Effacement individus<a class="anchor-link" href="#Effacement-individus">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -22604,7 +22646,9 @@ Cette corrélation est positive : plus le coefficient augmente, plus la probabil
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id='M3P8'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M3P8'></a></p>
 <h2 id="R&#233;plication-des-lignes-de-la-WDI-(x500)">R&#233;plication des lignes de la WDI (x500)<a class="anchor-link" href="#R&#233;plication-des-lignes-de-la-WDI-(x500)">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -22659,7 +22703,9 @@ Après avoir répliqué notre dataset 500 fois, nous obtenons un dataset <strong
 <li>Créer une fonction qui à une distribution de $y_{child}$ donnée, à pj donné, calcule une table de $y_{parents}$ associés et donc de $c_{i,parents}$ associés.
 <br><br></li>
 </ul>
-<p><a id='M3P9'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M3P9'></a></p>
 <h2 id="Calcul-des-$c_{i,parents}$">Calcul des $c_{i,parents}$<a class="anchor-link" href="#Calcul-des-$c_{i,parents}$">&#182;</a></h2><h3 id="Coefficients-de-mobilit&#233;/&#233;lasticit&#233;-propos&#233;s-par-la-WDI">Coefficients de mobilit&#233;/&#233;lasticit&#233; propos&#233;s par la WDI<a class="anchor-link" href="#Coefficients-de-mobilit&#233;/&#233;lasticit&#233;-propos&#233;s-par-la-WDI">&#182;</a></h3><p>Disponibles sur <a href = "https://www.worldbank.org/en/topic/poverty/brief/what-is-the-global-database-on-intergenerational-mobility-gdim" target="_blank">cette page</a>. Nous les stockons dans le dataset <strong>coef_pj</strong>.</p>
 
 </div>
@@ -23520,7 +23566,9 @@ Pour chacun de ces pays, les coefficients de mobilité sont absents. Nous remerc
 <p><br><br>
 Nous calculons à présent les $c_{i,parents}$ dans <strong>data_new</strong>.
 <br><br></p>
-<h3 id="Calcul-des-$c_{i,parents}$">Calcul des $c_{i,parents}$<a class="anchor-link" href="#Calcul-des-$c_{i,parents}$">&#182;</a></h3><p><strong>Méthode</strong> : créer une fonction <strong>c_i_parents</strong> réalisant les tâches suivantes :</p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><h3 id="Calcul-des-$c_{i,parents}$">Calcul des $c_{i,parents}$<a class="anchor-link" href="#Calcul-des-$c_{i,parents}$">&#182;</a></h3><p><strong>Méthode</strong> : créer une fonction <strong>c_i_parents</strong> réalisant les tâches suivantes :</p>
 <ul>
 <li>tri du dataset <strong>data_new</strong> en fonction du pays et de ses quantiles pour une meilleure visibilité</li>
 <li>calcul des y_parents</li>
@@ -24273,7 +24321,9 @@ Nous avons recalculé, en fonction du coefficient de mobilité (élasticité) de
 </ul>
 </li>
 </ul>
-<p><a id='M4'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M4'></a></p>
 <h1 id="Mission-04">Mission 04<a class="anchor-link" href="#Mission-04">&#182;</a></h1><p>Pour comprendre ces relations, nous réalisons plusieurs tests :</p>
 <ul>
 <li>ANOVA : expliquer la significativité des différences des <strong>income</strong> entre les différents pays</li>
@@ -24694,7 +24744,9 @@ Notre dataset fait 5.8 millions de lignes. Nous en choisis 1% : 58 000. Cela sem
 </div>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
-<p><a id='M4P1'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M4P1'></a></p>
 <h2 id="ANOVA-&#224;-un-facteur">ANOVA &#224; un facteur<a class="anchor-link" href="#ANOVA-&#224;-un-facteur">&#182;</a></h2><p>Afin de tester l'égalité de mes revenus selon les pays avec un ANOVA à un facteur, nous vérifions les hypothèses suivantes du modèle :</p>
 <ul>
 <li>normalité des income (variable endogène)</li>
@@ -24756,8 +24808,10 @@ H_1 : F_{train} \neq F_{normal}
 Pour autant, compte-tenu de sa taille (58 000 lignes), par la loi faible des grands nombres, ma série converge en probabilité vers une loi normale. Nous pouvons donc procéder au test ANOVA.<br></p>
 <p>Nous cherchons à répondre à la question suivante :<br>
 <strong>Les revenus moyens des pays sont-ils égaux entre eux ?</strong><br>
-Les graphiques plus hauts nous amènent à penser que les niveaux de revenus sont différents. Voyons si l'<strong>ANOVA</strong> confirme cette tendance.</p>
-<p><a id='M4P2'></a></p>
+Les graphiques plus hauts nous amènent à penser que les niveaux de revenus sont différents. Voyons si l'<strong>ANOVA</strong> confirme cette tendance.<br><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M4P2'></a></p>
 <h2 id="ANOVA-des-income">ANOVA des income<a class="anchor-link" href="#ANOVA-des-income">&#182;</a></h2>
 </div>
 </div>
@@ -25560,7 +25614,9 @@ Avec une p-value inférieure à 5%, nous rejettons $H_0$. Les résidus ne sont p
 Pour autant, compte-tenu de la taille de l'échantillon et du dataset global, ce test nous donne une tendance globale déjà anticipée : les pays ont des structures de revenus différentes. Cette réalité est visibles dans les différentes économies réelles.</p>
 <p>Réalisons le même test ANOVA mais avec les log-revenus. Voyons si le modèle est davantage explicatif.
 <br><br></p>
-<p><a id='M4P3'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M4P3'></a></p>
 <h2 id="ANOVA-des-log-income">ANOVA des log-income<a class="anchor-link" href="#ANOVA-des-log-income">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -26285,7 +26341,10 @@ Nous procédons par <strong>régressions linéaires multiples</strong> pour comp
 <li>H4 : Les erreurs sont linéairement indépendantes des variables exogènes.</li>
 <li>H5 : Les erreurs suivent une loi normale.</li>
 </ul>
-<p><a id='M4P4'></a></p>
+<p><br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M4P4'></a></p>
 <h2 id="R&#233;gression-income-=-income_mean-+-gini">R&#233;gression income = income_mean + gini<a class="anchor-link" href="#R&#233;gression-income-=-income_mean-+-gini">&#182;</a></h2><h3 id="Normalit&#233;-des-variables-explicatives">Normalit&#233; des variables explicatives<a class="anchor-link" href="#Normalit&#233;-des-variables-explicatives">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -26339,7 +26398,9 @@ KstestResult(statistic=0.06322413793103454, pvalue=3.2043901166793366e-101)
 Les indices de Gini, les revenus moyens et les classifications parents ne sont pas normales (p-value inférieure à 5% invalidant leur normalité avec le test de Kolmogorov-Smirnov).<br>
 Nous invalidons les premières hypothèses des régressions linéaires. Pour autant, testons les régressions pour déceler d'éventuellles tendances.
 <br><br></p>
-<p><a id='M4P5'></a></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M4P5'></a></p>
 <h3 id="R&#233;gression-sans-log">R&#233;gression sans log<a class="anchor-link" href="#R&#233;gression-sans-log">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -26409,8 +26470,12 @@ strong multicollinearity or other numerical problems.
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><br><br>
-Toutes les variables explicatives ne sont pas significatives : l'intercept et surtout l'indice de gini ont une p-value supérieure à 5%. Leur coefficient n'est donc pas significatif. Par ailleurs, avec un $R²$ de 49.8%, nous souhaitons améliorer notre modèle. Cherchons des variables significatives en passant aux log-variables.</p>
-<p><a id='M4P6'></a></p>
+Toutes les variables explicatives ne sont pas significatives : l'intercept et surtout l'indice de gini ont une p-value supérieure à 5%. Leur coefficient n'est donc pas significatif. Par ailleurs, avec un $R²$ de 49.8%, nous souhaitons améliorer notre modèle. Cherchons des variables significatives en passant aux log-variables.
+<br>
+<br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M4P6'></a></p>
 <h3 id="R&#233;gression-avec-log">R&#233;gression avec log<a class="anchor-link" href="#R&#233;gression-avec-log">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -26708,8 +26773,12 @@ dtype: float64</pre>
 <div class="jp-Cell-inputWrapper"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput " data-mime-type="text/markdown">
 <p><br><br>
-Nous souhaitons maintenant améliorer notre modèle en rajoutant une variable explicative : la classification parents (<strong>$c_{i,parents}$</strong>).</p>
-<p><a id='M4P7'></a></p>
+Nous souhaitons maintenant améliorer notre modèle en rajoutant une variable explicative : la classification parents (<strong>$c_{i,parents}$</strong>).
+<br>
+<br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M4P7'></a></p>
 <h2 id="R&#233;gression-:-income-=-incomemean-+-gini-+-$c{i}(parents)$">R&#233;gression : income = income<em>mean + gini + $c</em>{i}(parents)$<a class="anchor-link" href="#R&#233;gression-:-income-=-incomemean-+-gini-+-$c{i}(parents)$">&#182;</a></h2><p><a id='M4P8'></a></p>
 <h3 id="R&#233;gression-sans-log">R&#233;gression sans log<a class="anchor-link" href="#R&#233;gression-sans-log">&#182;</a></h3>
 </div>
@@ -26783,8 +26852,12 @@ strong multicollinearity or other numerical problems.
 <p><br><br>
 Toutes les variables ne sont pas significatives : l'indice de gini a une p-value supérieure à 5%. Par ailleurs, le $R²$ de 52.8% demeure perfectible.
 <br></p>
-<p>Nous passons les variables au log pour observer une amélioration du modèle.</p>
-<p><a id='M4P9'></a></p>
+<p>Nous passons les variables au log pour observer une amélioration du modèle.
+<br>
+<br></p>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><p><a id='M4P9'></a></p>
 <h3 id="R&#233;gression-avec-log">R&#233;gression avec log<a class="anchor-link" href="#R&#233;gression-avec-log">&#182;</a></h3>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -27039,7 +27112,9 @@ Avec des indices inférieurs à 5 et des coefficients de Pearson proche de zéro
 <li>plus la classification parents augmente, plus les revenus enfant ont tendance à augmenter, plus les chances d'avoir un haut revenu de mes prospects augmentent.<br></li>
 </ul>
 <h2 id="Conclusions-du-mod&#232;le">Conclusions du mod&#232;le<a class="anchor-link" href="#Conclusions-du-mod&#232;le">&#182;</a></h2><p>Nous notons ici la différence de poids entre ln_income_mean, ln_gini et ln_ci_parents. Les income sont sensiblement plus grands que les gini et les classifications parents dans leur ordre de grandeur. Par conséquent, les principaux facteurs explicatifs demeurent ici les niveaux de revenus moyens, auxquels nous pouvons ajouter dans une mesure plus modérée les indices de Gini et la connaissance de la classe de revenus des parents.<br><br>
-Compte-tenu du coefficient de mobilité de chaque pays, il est manifeste que connaître la classification des revenus parents, au sein-même d'un pays, est plus intéressant que l'indice de Gini en tant que tel. Il est possible de tirer plus de profit dans un pays à fort Gini au sein des classes plus élevées et que dans un pays à faible Gini avec une classification parents inconnue, à niveau de revenu inclassable.</p>
+Compte-tenu du coefficient de mobilité de chaque pays, il est manifeste que connaître la classification des revenus parents, au sein-même d'un pays, est plus intéressant que l'indice de Gini en tant que tel. Il est possible de tirer plus de profit dans un pays à fort Gini au sein des classes plus élevées et que dans un pays à faible Gini avec une classification parents inconnue, à niveau de revenu inclassable.
+<br>
+<br></p>
 
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
@@ -27089,7 +27164,9 @@ dtype: float64</pre>
 <p><br><br>
 Pour la curiosité et la beauté de l'essai, nous essayons cette fois-ci de trouver des relations avec les mêmes variables, mais sans passer la classifications parents au logarithme.
 <br><br></p>
-<h2 id="Am&#233;lioration-finale,-essai-sans-explication">Am&#233;lioration finale, essai sans explication<a class="anchor-link" href="#Am&#233;lioration-finale,-essai-sans-explication">&#182;</a></h2>
+<div align="right">
+<a href = "#sommaire">Retour au sommaire</a>
+</div><h2 id="Am&#233;lioration-finale,-essai-sans-explication">Am&#233;lioration finale, essai sans explication<a class="anchor-link" href="#Am&#233;lioration-finale,-essai-sans-explication">&#182;</a></h2>
 </div>
 </div><div class="jp-Cell jp-CodeCell jp-Notebook-cell   ">
 <div class="jp-Cell-inputWrapper">
@@ -27162,20 +27239,6 @@ Nous tentons ici d'expliquer les log-revenus des prospects en fonction des log-i
 <br><br></p>
 
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs  ">
-<div class="jp-Cell-inputWrapper">
-<div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In&nbsp;[&nbsp;]:</div>
-<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
-     <div class="CodeMirror cm-s-jupyter">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-
-     </div>
-</div>
-</div>
-</div>
-
 </div>
 </body>
 
